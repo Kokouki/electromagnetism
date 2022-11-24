@@ -1,20 +1,8 @@
-\documentclass{jsarticle}
-\title{講義ノート第1回}
-\author{}
-\date{}
-
-\makeatletter
-\newcommand{\reaction@}[1]{\begin{equation}\ce{#1}\end{equation}}
-\newcommand{\reaction@nonumber}[1]{\begin{equation*}\ce{#1}\end{equation*}}
-\newcommand{\reaction}{\@ifstar{\reaction@nonumber}{\reaction@}}
-\makeatother
-
-\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
-
-\usepackage[dvips]{graphicx}
+\documentclass[../main]{subfiles}
 
 \begin{document}
-\maketitle
+
+\part*{第1回}
 
 \section{静電場}
 
@@ -50,7 +38,7 @@ Coulomb力は{\bf 作用・反作用の法則}を満たすので,互いの点電
 \begin{equation}
 \left \{
 \begin{array}{l}
-q_1q_2 <0のとき引力\\
+qe1q_2 <0のとき引力\\
 q_1q_2 >0のとき斥力\\
 \end{array}
 \right.
