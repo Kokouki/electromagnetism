@@ -1,0 +1,151 @@
+\documentclass{jsarticle}
+\title{講義ノート第12回}
+\author{}
+\date{}
+
+
+\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+
+\usepackage{ascmac}
+
+\usepackage{amsmath}
+
+\usepackage[dvips]{graphicx}
+
+\usepackage{ulem}
+
+\parindent = 0pt
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{2}
+
+\section{電磁誘導}
+
+\setcounter{subsection}{1}
+
+\subsection{自己誘導,相互誘導}
+定電圧Vの直流電源,抵抗値Rの抵抗,インダクタンスLのコイルからなる直列回路を考える.
+\begin{eqnarray}
+V=RI+L\frac{dI}{dt}
+\end{eqnarray}
+
+\begin{eqnarray*}
+\frac{dI}{dI} = - \frac{R}{L}I + \frac{V}{L} = -\frac{R}{L} \left( I - \frac{V}{R} \right)
+\end{eqnarray*}
+
+ここでVは定電圧であるから
+\begin{eqnarray*}
+\frac{d}{dt} \left( I - \frac{V}{R} \right) =  -\frac{R}{L} \left( I - \frac{V}{R} \right) \\
+I - \frac{V}{R} = k e^{-\frac{R}{L}t}
+\end{eqnarray*}
+$t=0$で$I=0$ であるとすると, $k=-\frac{V}{R}$
+\begin{eqnarray*}
+I = \frac{V}{R} - \frac{V}{R} e^{-\frac{R}{L}t} = \frac{V}{R} \left( 1 - e^{-\frac{R}{L}t} \right)
+\end{eqnarray*}
+式から分かるように,定常状態に落ち着くまで電流は時間的に変化する,このような現象を{\bf 過渡現象}という.
+式(1)の両辺に電流Iを掛けると
+\begin{eqnarray*}
+IV = RI^2 + LI \frac{dI}{dt} = RI^2 + \frac{d}{dt} \left( \frac{1}{2} LI^2 \right)
+\end{eqnarray*}
+$IV$は電源の仕事率,$RI^2$ は単位時間当たりのジュール熱, $\frac{1}{2} LI^2$ は誘導起電力に抗して電流を0からIにするのに要するエネルギー,を表す. \\
+さて,ソレノイドのエネルギー $\frac{1}{2} LI^2=\frac{1}{2} \Phi I$を,磁束密度$B=\mu_0 n I$,磁束$\Phi = lnBS$を用いて書き換える.
+\begin{eqnarray*}
+\frac{1}{2} \Phi I &=& \frac{1}{2} lnBSI = \frac{1}{2} lS \cdot \frac{B}{\mu_0} B \\
+&=& lS \cdot \frac{1}{2\mu_0}B^2
+\end{eqnarray*}
+$lS$はソレノイドの体積であり,$\frac{1}{2} \Phi I$はエネルギーであるから,$\frac{1}{2\mu_0}B^2$はエネルギーの密度を表していることになる. \\
+一般に磁場{\bf B} は{\bf エネルギー密度}$\frac{1}{2\mu_0}\left| {\bf B} \right|^2$ をもつ. \\
+電流の系について,エネルギーを場による表現に書き換える.
+\begin{eqnarray*}
+\frac{1}{2} \sum_{k} \Phi_{k} I_{k} = \int \frac{1}{2 \mu_0} \left| {\bf B} \right|^2 dV
+\end{eqnarray*}
+また電荷の系についても,エネルギーを場による表現に書き換えることができるのは以前示した通りで,再掲すると \\
+\begin{eqnarray*}
+\frac{1}{2} \sum_{k} q_k \phi_k = \frac{\varepsilon_0}{2} \int \left| {\bf E} \right|^2 dV
+\end{eqnarray*}
+
+\subsection{変位電流とAmp\`ere-Maxwellの法則}
+Amp\`ereの法則は
+\begin{eqnarray*}
+{\rm rot}{\bf B} = \mu_0 {\bf i}
+\end{eqnarray*}
+両辺の発散をとると,
+\begin{eqnarray*}
+{\rm div ( rot {\bf B}) } = \mu_0 {\rm div}{\bf i}
+\end{eqnarray*}
+\begin{eqnarray*}
+\mbox{左辺}= \nabla \cdot ( \nabla \times {\bf B} ) = 0
+\end{eqnarray*}
+連続の式${\rm div}{\bf i}=-\frac{\partial \rho}{\partial t}$ を用いると右辺は
+\begin{eqnarray*}
+\mbox{右辺}= \mu_0 \left( -\frac{\partial \rho}{\partial t} \right)
+\end{eqnarray*}
+となるから,電荷密度に時間変化がある場合は,Amp\`ereの法則がこのままの形では成り立たない. \\
+補正形として何らかのベクトル場{\bf X}を付け加えることにより,${\rm rot}{\bf B} = \mu_0 ( {\bf i} + {\bf X} )$ を仮定する. \\
+両辺の発散をとると,
+\begin{eqnarray*}
+0 = \mu_0 ( {\rm div}{\bf i} + {\rm div}{\bf X} ) = \mu_0 \left( -\frac{\partial \rho}{\partial t} + {\rm div}{\bf X} \right)
+\end{eqnarray*}
+Gaussの法則${\rm div}{\bf E}=\frac{\rho}{\varepsilon_0}$ を用いて,
+\begin{eqnarray*}
+0 &=& \mu_0 \left( -\frac{\partial}{\partial t} \varepsilon_0 {\rm div}{\bf E} + {\rm div}{\bf X} \right) \\
+&=& \mu_0 \left(  {\rm div} \frac{\partial {\bf E}}{\partial t}   + {\rm div}{\bf X} \right) \\
+&=& \mu_0 {\rm div} \left( - \varepsilon_0 \frac{\partial {\bf E}}{\partial t} + {\bf X} \right)
+\end{eqnarray*}
+これが整合するためには,${\bf X}=\varepsilon_0 \frac{\partial {\bf E}}{\partial t}$ ととればよい.
+$\varepsilon_0 \frac{\partial {\bf E}}{\partial t}$のことを,{\bf 変位電流密度}あるいは{\bf 電束電流密度}という.
+\begin{itembox}[c]{Amp\`ere-Maxwellの法則}
+\begin{eqnarray}
+{\rm rot}{\bf B}=\mu_0 \left( {\bf i} + \varepsilon_0 \frac{\partial {\bf E}}{\partial t} \right)
+\end{eqnarray}
+\end{itembox}
+特に両辺を$\mu_0$で割った式を,閉曲面Sについて面積分すると,
+\begin{eqnarray*}
+\frac{1}{\mu_0} \int_{S} {\rm rot} {\bf B} \cdot {\bf dS} = \int_{S} {\bf i} \cdot {\bf dS} + \varepsilon_0 \int_{S} \frac{\partial {\bf E}}{\partial t} \cdot {\bf dS}
+\end{eqnarray*}
+左辺をGaussの法則により体積積分に書き換えると,
+\begin{eqnarray*}
+\frac{1}{\mu_0} \int_{V} {\rm div}({\rm rot} {\bf B}) dV = 0
+\end{eqnarray*}
+右辺の1項目は閉曲面Sから湧き出る全電流を表し,2項目は閉曲面Sから湧き出る全変位電流を表す. \\
+簡単のためこれらを$\alpha,\beta$と略記すると
+\begin{eqnarray}
+0=\alpha + \beta
+\end{eqnarray}
+{\bf 例}:放電により{\bf E}が弱まりつつあるコンデンサー \\
+閉曲面Sを,コンデンサーの片板だけ覆うようにとる.Sから湧き出る電流は$\alpha = I(>0)$ \\
+$\beta$を求める.電場{\bf E}の大きさEは極板の面積をAとすると$E=\frac{Q}{\varepsilon_0 A}$ \\
+\begin{eqnarray*}
+\frac{\partial E}{\partial t} = \frac{1}{\varepsilon_0 A} \frac{\partial Q}{\partial t} = - \frac{I}{\varepsilon_0 A}
+\end{eqnarray*}
+\begin{eqnarray*}
+\beta = \varepsilon_0 \int_{S} \frac{\partial {\bf E}}{\partial t} \cdot {\bf dS} = - \varepsilon_0 \frac{I}{\varepsilon_0 A} \cdot A = -\alpha
+\end{eqnarray*}
+確かに(3)と一致する.
+
+\subsection{Maxwell方程式}
+
+\begin{itembox}[c]{Maxwell方程式}
+\begin{eqnarray*}
+&\textcircled{\scriptsize 1}& \quad {\rm div}{\bf E}=\frac{\rho}{\varepsilon_0} \\
+&\textcircled{\scriptsize 2}& \quad {\rm div}{\bf B}=0 \\
+&\textcircled{\scriptsize 3}& \quad {\rm rot}{\bf E}=-\frac{\partial {\bf B}}{\partial t} \\
+&\textcircled{\scriptsize 4}& \quad {\rm rot}{\bf B}=\mu_0 \left( {\bf i} + \varepsilon_0 \frac{\partial {\bf E}}{\partial t} \right)
+\end{eqnarray*}
+\end{itembox}
+$\textcircled{\scriptsize 1} \sim \textcircled{\scriptsize 4}$ から電荷保存が成立することを示す. \\
+$\textcircled{\scriptsize 4}$の両辺を$\mu_0$で割って発散をとると
+\begin{eqnarray*}
+\frac{1}{\mu_0} {\rm div}({\rm rot}{\bf B}) = {\rm div}{\bf i} + \varepsilon_0 \frac{\partial}{\partial t} {\rm div}{\bf E}
+\end{eqnarray*}
+左辺は0となる.右辺を$\textcircled{\scriptsize 1}$を用いて書き換えると,
+\begin{eqnarray*}
+0 = {\rm div}{\bf i} + \frac{\partial \rho}{\partial t}
+\end{eqnarray*}
+確かに電荷保存が導かれる. \\
+\end{document}
+
+
+

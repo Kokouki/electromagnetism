@@ -1,0 +1,121 @@
+\documentclass{jsarticle}
+\title{講義ノート第13回}
+\author{}
+\date{}
+
+
+\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+
+\usepackage{ascmac}
+
+\usepackage{amsmath}
+
+\usepackage[dvips]{graphicx}
+
+\usepackage{ulem}
+
+\usepackage{latexsym}
+
+\parindent = 0pt
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{2}
+
+\section{電磁誘導}
+
+\setcounter{subsection}{4}
+
+\subsection{電磁波}
+真空中では至るところ電荷密度$\rho=0$,電流密度${\bf i}={\bf 0}$である.したがって真空中のMaxwell方程式は以下のようになる. \\
+\begin{itembox}[c]{真空中のMaxwell方程式}
+\begin{eqnarray*}
+&\textcircled{\scriptsize 1}& \quad {\rm div}{\bf E}=0 \\
+&\textcircled{\scriptsize 2}& \quad {\rm div}{\bf B}=0 \\
+&\textcircled{\scriptsize 3}& \quad {\rm rot}{\bf E}=-\frac{\partial {\bf B}}{\partial t} \\
+&\textcircled{\scriptsize 4}& \quad {\rm rot}{\bf B}= \varepsilon_0 \mu_0   \frac{\partial {\bf E}}{\partial t}
+\end{eqnarray*}
+\end{itembox}
+${\bf E},{\bf B}$の${\bf 0}$でない解を求める. \\
+まず,任意のベクトル場{\bf A}には以下の式が成立する.
+\begin{eqnarray}
+{\rm rot}({\rm rot}{\bf A}) = {\rm grad}({\rm div}{\bf A}) - \Delta {\bf A}
+\end{eqnarray}
+$\textcircled{\scriptsize 3}$両辺の回転をとると,
+\begin{eqnarray*}
+{\rm rot}({\rm rot}{\bf E}) = {\rm rot} \left( -\frac{\partial {\bf B}}{\partial t} \right)
+\end{eqnarray*}
+左辺を式(1)を用いて書き換えると
+\begin{eqnarray*}
+{\rm rot}({\rm rot}{\bf E}) = {\rm grad}({\rm div}{\bf E}) - \Delta {\bf E}
+\end{eqnarray*}
+$\textcircled{\scriptsize 1}$より真空中の電場の発散は0であるから
+\begin{eqnarray*}
+{\rm rot}({\rm rot}{\bf E}) = - \Delta {\bf E}
+\end{eqnarray*}
+次に右辺の時間微分を回転の外側に出してから,$\textcircled{\scriptsize 4}$を用いて書き換えると
+\begin{eqnarray*}
+{\rm rot} \left( -\frac{\partial {\bf B}}{\partial t} \right) = -\frac{\partial}{\partial t} {\rm rot}{\bf B} = - \varepsilon_0 \mu_0 \frac{\partial^2 {\bf E}}{\partial t^2}
+\end{eqnarray*}
+まとめると
+\begin{eqnarray}
+- \Delta {\bf E} = - \varepsilon_0 \mu_0 \frac{\partial^2 {\bf E}}{\partial t^2}
+\end{eqnarray}
+$\textcircled{\scriptsize 4}$についても同様の操作をすると
+\begin{eqnarray}
+\Delta {\bf B} = \varepsilon_0 \mu_0 \frac{\partial^2 {\bf B}}{\partial t^2}
+\end{eqnarray}
+ここで光速$c=\frac{1}{\sqrt[]{\mathstrut \varepsilon_0 \mu_0}}$を用いて式(2),(3)を整理された形に書き直すと
+\begin{equation*}
+\left \{
+\begin{array}{l}
+\left( \Delta - \frac{1}{c^2}\frac{\partial^2}{\partial t^2} \right) {\bf E} = {\bf 0} \\
+\\
+\left( \Delta - \frac{1}{c^2}\frac{\partial^2}{\partial t^2} \right) {\bf B} = {\bf 0}
+\end{array}
+\right.
+\end{equation*}
+これは3次元の波動方程式の形になっている.\footnote{演算子$\Delta - \frac{1}{c^2}\frac{\partial^2}{\partial t^2}$ はd'Alembertianといい,記号$\Box$で表す.これを用いるとさらに簡単な形$\Box {\bf E}={\bf 0},\Box {\bf B}={\bf 0}$で表すことができる.}
+光は電磁波であることがわかる. \\
+{\bf 1次元のとき} \\
+Laplacianのうち$\frac{\partial^2}{\partial x^2}$だけを考えると,
+電磁場を位置x,時間tに依存する関数$f(x,t)$とすることで
+\begin{eqnarray}
+\left( \frac{\partial^2}{\partial x^2} - \frac{1}{c^2}\frac{\partial^2}{\partial t^2} \right) f(x,t) =0
+\end{eqnarray}
+例えば解は以下のように書ける.
+\begin{eqnarray*}
+f(x,t) = A \sin (kx-\omega t + \delta)
+\end{eqnarray*}
+k:波数,$\omega$:振動数,$\delta$:初期位相 \\
+これが式(4)を満たす為の,解の条件は$k=\frac{\omega}{c}$({\bf 分散関係}) \\
+{\bf 3次元のとき}\footnote{大分端折りました.申し訳ありません.} \\
+波の進行方向を向き,各成分が波数である{\bf 波数ベクトル}${\bf k}=(k_x,k_y,k_z)$ を導入することで
+\begin{eqnarray}
+\left \{
+\begin{array}{l}
+{\bf E}({\bf r},t)={\bf e} \sin({\bf k}\cdot{\bf r}-\omega t + \delta) \\
+{\bf B}({\bf r},t)={\bf b} \sin({\bf k}\cdot{\bf r}-\omega t + \delta)
+\end{array}
+\right.
+\end{eqnarray}
+の形で解を探す.
+\begin{eqnarray*}
+\left( \Delta - \frac{1}{c^2}\frac{\partial^2}{\partial t^2} \right) {\bf E} = {\bf 0}
+\end{eqnarray*}
+で${\bf E}$に式(5)を代入して解き進めると,解の条件の1つは
+\begin{eqnarray*}
+\omega=c\left| {\bf k} \right| = c \ \sqrt[]{\mathstrut k_x^2+k_y^2+k_z^2}
+\end{eqnarray*}
+これが3次元の{\bf 分散関係}である.
+次に式(5)を真空中のMaxwell方程式の$\textcircled{\scriptsize 1},\textcircled{\scriptsize 2},\textcircled{\scriptsize 3}$に代入して解き進めることで以下の結果が得られる.
+\begin{eqnarray*}
+{\bf k} \perp {\bf e}, {\bf k} \perp {\bf b},{\bf k} \times {\bf e} = \omega {\bf b}
+\end{eqnarray*}
+よって電場と磁場と波数ベクトルは互いに垂直になっていることがわかる. \\
+また電磁波には重ね合わせが成り立つ.つまり,({\bf E},{\bf B}),({\bf E}',{\bf B}')が解であるならば({\bf E}+{\bf E}',{\bf B}+{\bf B}')も解である.
+\end{document}
+
+
+

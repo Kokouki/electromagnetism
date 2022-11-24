@@ -1,0 +1,254 @@
+\documentclass{jsarticle}
+\title{講義ノート第9回}
+\author{}
+\date{}
+
+
+\usepackage[top=30truemm,bottom=30truemm,left=25truemm,right=25truemm]{geometry}
+
+\usepackage{ascmac}
+
+\usepackage{amsmath}
+
+\usepackage[dvips]{graphicx}
+
+\usepackage{ulem}
+
+\parindent = 0pt
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{1}
+
+\section{定常電流と静磁場}
+
+\setcounter{subsection}{2}
+
+
+\subsection{磁束密度の発散}
+磁束密度の発散がどうなるか考える. \\
+先に結論から言ってしまうと,磁場に対して電場のときのようなGaussの法則が得られる.
+\begin{itembox}[c]{磁場に対するGaussの法則}
+\begin{eqnarray}
+{\rm div}{\bf B}=0
+\end{eqnarray}
+\end{itembox}
+発散が0ということは,直観的に「磁束が出て行くだけ,または入り込むだけということはない.」と解釈できるので,以下のように言い換えることができる.
+\begin{center}
+磁気単極子(monopole)は存在しない（見つかっていない）.
+\end{center}
+もしmonopoleが存在したら,N極だけ,またはS極だけの磁石が存在することになり,前者は${\rm div}{\bf B}>0$,後者は${\rm div}{\bf B}<0$となってしまう. \\
+式(1)を証明する. \\
+{\bf 証明} \\
+\begin{itembox}[c]{Biot-Savartの法則}
+\begin{eqnarray}
+{\bf B}({\bf r})=\frac{\mu_0}{4 \pi} \int_{V}^{}\frac{{\bf i}({\bf r'}) \times ({\bf r}-{\bf r'})}{|{\bf r}-{\bf r'}|^3} d{\bf r'}
+\end{eqnarray}
+\end{itembox}
+これを用いて導出する.
+\begin{eqnarray*}
+{\bf r}=(x,y,z),{\bf r'}=(x',y',z'),{\bf i}({\bf r'})=(i_x({\bf r'}),i_y({\bf r'}),i_z({\bf r'})),|{\bf r}-{\bf r'}|=\sqrt[]{\mathstrut (x-x')^2+(y-y')^2+(z-z')^2}=R
+\end{eqnarray*}
+とする.また,表記を簡略にするため,電流密度が位置${\bf r'}$に依存することは省略して${\bf i}=(i_x,i_y,i_z)$とする.まず先に
+\begin{eqnarray*}
+\frac{\partial}{\partial x} \left( \frac{1}{R^3} \right) = - \frac{3(x-x')}{R^5} \\
+\frac{\partial}{\partial y} \left( \frac{1}{R^3} \right) = - \frac{3(y-y')}{R^5} \\
+\frac{\partial}{\partial z} \left( \frac{1}{R^3} \right) = - \frac{3(z-z')}{R^5} \\
+\end{eqnarray*}
+次に${\bf B}$の外積を書き下した形で発散をとると,
+\begin{eqnarray*}
+{\rm div}{\bf B}&=&\frac{\mu_0}{4 \pi}  \int_{V}^{} \frac{\partial}{\partial x}\left\{ \frac{i_y(z-z')-i_z(y-y')}{R^3} \right\} d{\bf r'} \\
+&+&\frac{\mu_0}{4 \pi}  \int_{V}^{} \frac{\partial}{\partial y} \left\{ \frac{i_z(x-x')-i_x(z-z')}{R^3} \right\} d{\bf r'} \\
+&+&\frac{\mu_0}{4 \pi}  \int_{V}^{} \frac{\partial}{\partial z} \left\{ \frac{i_x(y-y')-i_y(x-x')}{R^3} \right\} d{\bf r'} \\
+\end{eqnarray*}
+3項の被積分関数はつなげて以下のように変形できる. \\
+\begin{eqnarray*}
+&\ & \frac{\partial}{\partial x}\left( \frac{1}{R^3} \right) \left\{i_y(z-z')-i_z(y-y')\right\} + \frac{\partial}{\partial y}\left( \frac{1}{R^3} \right) \left\{i_z(x-x')-i_x(z-z')\right\} \\
+&+& \frac{\partial}{\partial z}\left( \frac{1}{R^3} \right) \left\{i_x(y-y')-i_y(x-x')\right\} \\
+&=&-\frac{3(x-x')}{R^5} \left\{i_y(z-z')-i_z(y-y')\right\} - \frac{3(y-y')}{R^5} \left\{i_z(x-x')-i_x(z-z')\right\} \\
+&-& \frac{3(z-z')}{R^5} \left\{i_x(y-y')-i_y(x-x')\right\} \\
+&=& 0
+\end{eqnarray*}
+よって${\rm div}{\bf B}=0$が示された. \\
+\begin{flushright}
+{\bf (証明終)}
+\end{flushright}
+
+\subsection{ベクトルポテンシャル}
+\begin{itembox}[c]{ベクトルポテンシャル}
+\begin{eqnarray}
+{\bf A}({\bf r})=\frac{\mu_0}{4 \pi} \int \frac{{\bf i}({\bf r'})}{|{\bf r}-{\bf r'}|} d{\bf r'}
+\end{eqnarray}
+積分は全空間にわたる体積積分とする.
+\end{itembox}
+線電流の場合,電線上以外では電流密度の値が0となるから,積分は電線Cに沿う線積分で十分であり,
+\begin{eqnarray*}
+{\bf A}({\bf r})=\frac{\mu_0 {\rm I}}{4 \pi} \int_{C}^{} \frac{{\bf l}}{|{\bf r}-{\bf l}|}
+\end{eqnarray*}
+さて,磁束密度とベクトルポテンシャルの間には以下の関係が成り立つ(というより,以下の関係が成り立つようにベクトルポテンシャルを定義しているのである.)
+\begin{itembox}[c]{磁束密度とベクトルポテンシャルの関係}
+\begin{eqnarray}
+{\bf B}={\rm rot}{\bf A}
+\end{eqnarray}
+\end{itembox}
+\newpage
+{\bf 証明} \\
+x,y,zは対称となっているから,x成分だけを計算する.
+\begin{eqnarray*}
+({\rm rot}{\bf A})_x &=& \frac{\partial A_z}{\partial y}-\frac{\partial A_y}{\partial z} \\
+&=& \frac{\mu_0}{4 \pi} \left( \frac{\partial}{\partial y} \int \frac{i_z({\bf r'})}{|{\bf r}-{\bf r'}|} d{\bf r'} 
+- \frac{\partial}{\partial z} \int \frac{i_y({\bf r'})}{|{\bf r}-{\bf r'}|} d{\bf r'} \right)
+\end{eqnarray*}
+$|{\bf r}-{\bf r'}|=R$とすると,
+\begin{eqnarray*}
+\frac{\partial}{\partial y}\left( \frac{1}{R} \right)=-\frac{y-y'}{R^3},\frac{\partial}{\partial z}\left( \frac{1}{R} \right)=-\frac{z-z'}{R^3}
+\end{eqnarray*}
+なので
+\begin{eqnarray*}
+({\rm rot}{\bf A})_x &=& \frac{\mu_0}{4 \pi} \int \frac{i_y({\bf r'})(z-z')-i_z({\bf r'})(y-y')}{R^3} d{\bf r'} \\ 
+&=& \frac{\mu_0}{4 \pi} \int \frac{\left\{ {\bf i}({\bf r'}) \times ({\bf r}-{\bf r'}) \right\}_x }{|{\bf r}-{\bf r'}|^3} d{\bf r'} \\
+&=& \left\{ {\bf B}({\bf r}) \right\}_x
+\end{eqnarray*}
+同様の計算により,$({\rm rot}{\bf A})_y=\left\{ {\bf B}({\bf r}) \right\}_y$,$({\rm rot}{\bf A})_z=\left\{ {\bf B}({\bf r}) \right\}_z$となり,
+${\bf B}={\rm rot}{\bf A}$が証明できた. \\
+\begin{flushright}
+{\bf (証明終)}
+\end{flushright}
+式(2),(3)を見比べると,ベクトルポテンシャルに表れる積分は,Biot-Savartの法則に表れる積分より単純な形になっていることがわかる.
+ここでベクトルポテンシャルのもつ不定性について考えたい. \\
+そこで任意のスカラー場$\psi$が${\rm rot}({\rm grad}\psi)={\bf 0}$を満たすことに注目する.
+{\bf 証明} \\
+対称性から,x成分だけ計算する. \\
+\begin{eqnarray*}
+\left\{ {\rm rot}({\rm grad}\psi) \right\}_x &=& \frac{\partial}{\partial y}({\rm grad}\psi)_z-\frac{\partial}{\partial z}({\rm grad}\psi)_y \\
+&=& \frac{\partial}{\partial y} \frac{\partial \psi}{\partial z}- \frac{\partial}{\partial z} \frac{\partial \psi}{\partial y} = 0
+\end{eqnarray*}
+計算の最後に,スカラー場は連続的微分可能であり,偏微分が可換であることを利用した. \\
+同様に$\left\{ {\rm rot}({\rm grad}\psi) \right\}_y=0$,$\left\{ {\rm rot}({\rm grad}\psi) \right\}_z=0$であるから,${\rm rot}({\rm grad}\psi)={\bf 0}$が示された. \\
+\begin{flushright}
+{\bf (証明終)}
+\end{flushright}
+したがってベクトル場の回転が線形であることを用いると,式(4)は
+\begin{eqnarray*}
+{\bf B}={\rm rot}{\bf A}={\rm rot}{\bf A} + {\bf 0} = {\rm rot}{\bf A}+{\rm rot}({\rm grad}\psi)={\rm rot}({\bf A}+{\rm grad}\psi)
+\end{eqnarray*}
+したがってベクトルポテンシャルには$+{\rm grad}\psi$の不変性がある.\footnote{これはゲージ不変性と関係している.} \\
+{\bf 例1} \\
+z軸方向に一様な磁場を考える. \\
+磁束密度を
+\begin{eqnarray*}
+{\bf B}=
+\left(
+\begin{array}{c}
+0 \\
+0 \\
+B
+\end{array}
+\right)
+\end{eqnarray*}
+とすると,式(4)を満たすベクトルポテンシャルの\uwave{例}は,
+\begin{eqnarray*}
+{\bf A}=\left(
+\begin{array}{c}
+0 \\
+Bx \\
+0
+\end{array}
+\right),
+{\bf A'}=\left(
+\begin{array}{c}
+- \frac{B}{2}y \\
+\frac{B}{2}x \\
+0
+\end{array}
+\right)
+\end{eqnarray*}
+またベクトルポテンシャルの不定性から{\bf A'}を,{\bf A}とスカラー場の勾配の和で表せるはずであり,確かに \\
+\begin{eqnarray*}
+{\bf A'} = {\bf A} +\left(
+\begin{array}{c}
+- \frac{B}{2}y \\
+-\frac{B}{2}x \\
+0
+\end{array}
+\right)
+={\bf A}+ {\rm grad}\left(-\frac{B}{2}xy\right)
+\end{eqnarray*}
+{\bf 例2} \\
+円電流の場合,例えば
+\begin{eqnarray*}
+{\bf A} = \left(
+\begin{array}{c}
+0 \\
+0 \\
+-\frac{\mu_0 {\rm I}}{4 \pi} \log(x^2+y^2)
+\end{array}
+\right)
+\end{eqnarray*}
+とすると${\rm rot}{\bf A}$が2.2節の例でやった円電流の${\bf B}$と一致することが分かる.
+
+\subsection{Amp\`ereの法則}
+\begin{itembox}[c]{Amp\`ereの法則(微分形)}
+\begin{eqnarray}
+{\rm rot}{\bf B}=\mu_0{\bf i}
+\end{eqnarray}
+\end{itembox}
+この法則の意味するところは,線電流があると,その線電流に巻きつくように磁束密度${\bf B}$が生じる,ということである.また,磁場{\bf B}の回転の方向が電流の方向と一致するようになっている.この法則を証明するのにいくつかの関係式が必要である. \\
+\begin{eqnarray*}
+\textcircled{\scriptsize1} \quad {\rm rot}({\rm rot}{\bf A})=-\triangle {\bf A} + {\rm grad}({\rm div}{\bf A}) \\
+\textcircled{\scriptsize2} \quad \triangle \int \frac{{\bf i}({\bf r'})}{4 \pi |{\bf r}-{\bf r'}|} d{\bf r'} = - {\bf i}({\bf r}) \\
+\textcircled{\scriptsize3} \quad {\rm div}{\bf A}=0
+\end{eqnarray*}
+$\textcircled{\scriptsize1}$ {\bf 証明} \\
+\begin{eqnarray*}
+\mbox{右辺} = -\left(
+\begin{array}{c}
+\frac{\partial^2A_x}{\partial x^2}+\frac{\partial^2A_x}{\partial y^2}+\frac{\partial^2A_x}{\partial z^2} \\
+\\
+\frac{\partial^2A_y}{\partial x^2}+\frac{\partial^2A_y}{\partial y^2}+\frac{\partial^2A_y}{\partial z^2} \\
+\\
+\frac{\partial^2A_z}{\partial x^2}+\frac{\partial^2A_z}{\partial y^2}+\frac{\partial^2A_z}{\partial z^2}
+\end{array}
+\right)
++\left(
+\begin{array}{c}
+\frac{\partial}{\partial x}{\rm div}{\bf A} \\
+\\
+\frac{\partial}{\partial y}{\rm div}{\bf A} \\
+\\
+\frac{\partial}{\partial z}{\rm div}{\bf A} \\
+\end{array}
+\right) 
+\end{eqnarray*}
+計算するだけであるから,以下の証明は省略する.右辺と左辺を書き下した結果が一致すればよい. \\
+
+$\textcircled{\scriptsize2}$ {\bf 証明} \\
+静電ポテンシャルは
+\begin{eqnarray*}
+\phi ({\bf r})= \int \frac{\rho({\bf r'})}{4 \pi \varepsilon_0 |{\bf r}-{\bf r'}|}d{\bf r'}
+\end{eqnarray*}
+両辺に左からLaplacianを掛けると,
+\begin{eqnarray*}
+\triangle \phi ({\bf r})= \triangle \int \frac{\rho({\bf r'})}{4 \pi \varepsilon_0 |{\bf r}-{\bf r'}|}d{\bf r'}
+\end{eqnarray*}
+これを静電ポテンシャルのPoisson方程式$\triangle \phi({\bf r}) = - \frac{\rho({\bf r})}{\varepsilon_0}$と比較することで,
+\begin{eqnarray*}
+\int \frac{\rho({\bf r'})}{4 \pi |{\bf r}-{\bf r'}|}d{\bf r'}= - \rho ({\bf r})
+\end{eqnarray*}
+これが任意の電荷密度について成立するので順々に$\rho=i_x,i_y,i_z$としたものを組んで電流密度${\bf i}$とすれば$\textcircled{\scriptsize2}$が成り立つ. \\
+$\textcircled{\scriptsize 3}$の証明はWebの補遺を参照されたい.
+
+$\textcircled{\scriptsize 1},\textcircled{\scriptsize 2},\textcircled{\scriptsize 3}$を用いてAmp\`ereの法則を導く. \\
+
+\begin{eqnarray*}
+{\rm rot}{\bf B}&=&{\rm rot}({\rm rot}{\bf A}) \\
+&=&- \triangle {\bf A}+{\rm grad}({\rm div}{\bf A}) = - \triangle {\bf A} \\
+&=&- \triangle \frac{\mu_0}{4 \pi} \int \frac{{\bf i}({\bf r'})}{|{\bf r}-{\bf r'}|} d{\bf r'} = \mu_0 {\bf i}({\bf r})
+\end{eqnarray*}
+\begin{flushright}
+{\bf (証明終)}
+\end{flushright}
+Biot-Savartの法則から2つの式が得られた.ひとつは${\rm div}{\bf B}=0$であり,これは電流が定常でなくても成立する.もうひとつは
+${\rm rot}{\bf B}=\mu_0{\bf i}$であり,これは電流が定常でないと補正が入る.
+\end{document}
