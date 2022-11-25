@@ -7,6 +7,6 @@
 ## Usage
 ```
 platex -interaction=nonstopmode main.tex
-platex -interaction=nonstopmode main.tex
+!!
 dvipdfmx main
 ```
